@@ -14,7 +14,6 @@ public class YandexScheduler {
     private final CoordinateProperties coordinateProperties;
     private final TaxiService taxiService;
 
-    @Timed("schedulerTaxi")
     @Scheduled(fixedDelay = 30_000)
     public void updatePrice() {
         Coordinate startPoint = new Coordinate(coordinateProperties.getStartLatitude(), coordinateProperties.getStartLongitude());

@@ -7,8 +7,9 @@ spring:
   jpa:
     database: postgresql
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
     show-sql: true
+
 
 coordinate:
   start-longitude: 49.230822
@@ -24,16 +25,18 @@ yandex:
   apiKey: lHEhDOioKTIccYwmzJWrDbCQEgypFyUVuXtmmpvb
 
 
+
 management:
-  endpoints.web.exposure.include: "prometheus, health"
+  # После добавления этой строки Micrometer начнет накапливать данные о приложении
+  prometheus.metrics.export.enabled: true
+
+  # включили гистограмму на основе процентилей для http запросов
   metrics:
     distribution:
       percentiles-histogram:
         "[http.server.requests]": true
 
-  prometheus:
-    metrics:
-      export:
-        enabled: true
+  # В actuator добавили конечную точку
+  endpoints.web.exposure.include: 'prometheus, health'
 
 

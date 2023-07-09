@@ -7,7 +7,6 @@ import com.itis.yandextaxischeduler.model.Price;
 import com.itis.yandextaxischeduler.properties.YandexProperties;
 import com.itis.yandextaxischeduler.repository.PriceRepository;
 import io.micrometer.core.instrument.MeterRegistry;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -41,7 +40,9 @@ public class TaxiService {
             throw new RuntimeException("Options are empty");
         }
         double priceDouble = currentPrice.getOptions().get(0).getPrice();
+
         price.set((int)priceDouble);
+
         MomentPrice momentPrice = new MomentPrice(
                 LocalDateTime.now(ZoneId.of("Europe/Moscow")),
                 priceDouble
