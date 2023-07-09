@@ -10,7 +10,7 @@ global:
 # Here it's Prometheus itself.
 scrape_configs:
   - job_name: 'taxi-service'
-    scrape_interval: 5s
-    metrics_path: '/actuator/prometheus'   # The HTTP resource path on which to fetch metrics from targets.
-    static_configs:                        # A static_config allows specifying a list of targets and a common label set for them
-      - targets: ['host.docker.internal:8080']
+    scrape_interval: 5s # Время обращения к endPoint
+    metrics_path: '/actuator/prometheus'   # Путь к HTTP-ресурсу, по которому можно извлекать показатели из целевых объектов
+    static_configs:                        # static_config позволяет указать список целевых объектов и общий набор меток для них
+      - targets: ['host.docker.internal:8080'] # Указываем host.docker.internal:8080 вместо localhost, так как мы будем обращаться из нашего контейнера к другому
