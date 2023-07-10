@@ -31,7 +31,7 @@
 
 Добавили контейнеры prometheus и grafana в docker-compose   
 
-![img.png](img.png)
+![img_1.png](imagesforreadme/img_1.png)
 
 
 
